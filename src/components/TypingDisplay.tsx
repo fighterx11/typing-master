@@ -99,31 +99,31 @@ export const TypingDisplay: React.FC<TypingDisplayProps> = ({
 
   const renderWord = (word: string, globalWordIndex: number, isInCurrentLine: boolean, wordIndexInLine: number) => {
     const isCurrentWord = globalWordIndex === currentWordIndex;
-    
+
     if (isCurrentWord) {
       // Current word being typed - highlight background in middle section
       const hasCorrectChars = userInput.length > 0 && userInput.split('').some((char, i) => char === word[i]);
       const hasIncorrectChars = userInput.length > 0 && userInput.split('').some((char, i) => char !== word[i]);
-      
+
       return (
-        <span 
-          key={globalWordIndex} 
+        <span
+          key={globalWordIndex}
           className={`relative px-1 ${isInCurrentLine ? 'bg-primary/10 rounded' : ''} ${
-            hasCorrectChars && !hasIncorrectChars ? 'font-bold' : 
+            hasCorrectChars && !hasIncorrectChars ? 'font-bold' :
             hasIncorrectChars ? 'font-bold' : ''
           }`}
         >
           {word.split('').map((char, charIndex) => {
             let className = 'text-muted-foreground/60';
-            
+
             if (charIndex < userInput.length) {
-              className = userInput[charIndex] === char 
-                ? 'text-foreground' 
-                : 'text-red-500';
+              className = userInput[charIndex] === char
+                ? 'text-foreground'
+                : 'text-muted-foreground/60';
             } else if (charIndex === currentCharIndex) {
               className = 'text-muted-foreground/60 border-b border-primary';
             }
-            
+
             return (
               <span key={charIndex} className={className}>
                 {char}
@@ -137,12 +137,12 @@ export const TypingDisplay: React.FC<TypingDisplayProps> = ({
       const typedWord = typedWords[globalWordIndex] || '';
       return (
         <span key={globalWordIndex} className="font-bold">
-          {word.split('').map((char, charIndex) => {
+                    {word.split('').map((char, charIndex) => {
             const typedChar = typedWord[charIndex];
-            const className = typedChar === char 
-              ? 'text-muted-foreground/80' 
-              : 'text-red-500';
-            
+            const className = typedChar === char
+              ? 'text-muted-foreground/80'
+              : 'text-muted-foreground/60';
+
             return (
               <span key={charIndex} className={className}>
                 {char}
@@ -164,15 +164,15 @@ export const TypingDisplay: React.FC<TypingDisplayProps> = ({
   const renderLine = (line: string[], lineIndex: number) => {
     const isCurrentLine = lineIndex === currentLineIndex;
     let startWordIndex = 0;
-    
+
     // Calculate the starting word index for this line
     for (let i = 0; i < lineIndex; i++) {
       startWordIndex += lines[i].length;
     }
-    
+
     return (
-      <div 
-        key={lineIndex} 
+      <div
+        key={lineIndex}
         className={`flex gap-3 min-h-[2rem] items-center transition-all duration-300 ${
           isCurrentLine ? 'opacity-100' : 'opacity-70'
         }`}
@@ -187,7 +187,7 @@ export const TypingDisplay: React.FC<TypingDisplayProps> = ({
 
   return (
     <div className="w-full max-w-4xl mx-auto">
-      <div 
+      <div
         className="relative bg-background border border-border rounded-lg overflow-hidden"
         style={{ height: '40vh', minHeight: '300px' }}
       >
@@ -197,7 +197,7 @@ export const TypingDisplay: React.FC<TypingDisplayProps> = ({
           <div className="flex-1 p-4 sm:p-6 md:p-8 overflow-hidden">
             <div className="h-full flex items-center">
               <div className="text-lg md:text-xl lg:text-2xl font-mono leading-relaxed w-full overflow-hidden">
-                {currentLineIndex > 0 && lines[currentLineIndex - 1] && 
+                {currentLineIndex > 0 && lines[currentLineIndex - 1] &&
                   renderLine(lines[currentLineIndex - 1], currentLineIndex - 1)
                 }
               </div>
@@ -217,7 +217,7 @@ export const TypingDisplay: React.FC<TypingDisplayProps> = ({
           <div className="flex-1 p-4 sm:p-6 md:p-8 overflow-hidden">
             <div className="h-full flex items-center">
               <div className="text-lg md:text-xl lg:text-2xl font-mono leading-relaxed w-full overflow-hidden">
-                {lines[currentLineIndex + 1] && 
+                {lines[currentLineIndex + 1] &&
                   renderLine(lines[currentLineIndex + 1], currentLineIndex + 1)
                 }
               </div>
