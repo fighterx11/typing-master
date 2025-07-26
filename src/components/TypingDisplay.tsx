@@ -102,28 +102,20 @@ export const TypingDisplay: React.FC<TypingDisplayProps> = ({
 
     if (isCurrentWord) {
       // Current word being typed - highlight background in middle section
-      const hasCorrectChars = userInput.length > 0 && userInput.split('').some((char, i) => char === word[i]);
-      const hasIncorrectChars = userInput.length > 0 && userInput.split('').some((char, i) => char !== word[i]);
-
       return (
         <span
           key={globalWordIndex}
-          className={`relative px-1 ${isInCurrentLine ? 'bg-primary/10 rounded' : ''} ${
-            hasCorrectChars && !hasIncorrectChars ? 'font-bold' :
-            hasIncorrectChars ? 'font-bold' : ''
-          }`}
+          className={`relative px-1 ${isInCurrentLine ? 'bg-primary/10 rounded' : ''}`}
         >
           {word.split('').map((char, charIndex) => {
-            let className = 'text-muted-foreground/60';
-
+            let className = 'text-muted-foreground/60'; // default: skipped/untyped
             if (charIndex < userInput.length) {
               className = userInput[charIndex] === char
-                ? 'text-foreground'
-                : 'text-muted-foreground/60';
+                ? 'text-green-500' // correct
+                : 'text-red-500'; // wrong
             } else if (charIndex === currentCharIndex) {
               className = 'text-muted-foreground/60 border-b border-primary';
             }
-
             return (
               <span key={charIndex} className={className}>
                 {char}
@@ -136,13 +128,15 @@ export const TypingDisplay: React.FC<TypingDisplayProps> = ({
       // Completed words - preserve character-level error information
       const typedWord = typedWords[globalWordIndex] || '';
       return (
-        <span key={globalWordIndex} className="font-bold">
-                    {word.split('').map((char, charIndex) => {
+        <span key={globalWordIndex}>
+          {word.split('').map((char, charIndex) => {
             const typedChar = typedWord[charIndex];
-            const className = typedChar === char
-              ? 'text-muted-foreground/80'
-              : 'text-muted-foreground/60';
-
+            let className = 'text-muted-foreground/60'; // default: skipped
+            if (typedChar !== undefined) {
+              className = typedChar === char
+                ? 'text-green-500' // correct
+                : 'text-red-500'; // wrong
+            }
             return (
               <span key={charIndex} className={className}>
                 {char}
