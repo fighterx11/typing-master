@@ -1,4 +1,3 @@
-
 import React, { useMemo, useState, useEffect } from 'react';
 
 interface TypingDisplayProps {
@@ -37,7 +36,7 @@ export const TypingDisplay: React.FC<TypingDisplayProps> = ({
 
   const getCharLimit = () => {
     switch (screenSize) {
-      case 'mobile': return 25;
+      case 'mobile': return 22;
       case 'tablet': return 45;
       case 'desktop': return 60;
       default: return 60;
@@ -167,7 +166,7 @@ export const TypingDisplay: React.FC<TypingDisplayProps> = ({
     return (
       <div
         key={lineIndex}
-        className={`flex gap-3 min-h-[2rem] items-center transition-all duration-300 ${
+        className={`flex ${screenSize === 'mobile' ? 'gap-1' : 'gap-3'} min-h-[2rem] items-center transition-all duration-300 ${
           isCurrentLine ? 'opacity-100' : 'opacity-70'
         }`}
       >
@@ -183,7 +182,10 @@ export const TypingDisplay: React.FC<TypingDisplayProps> = ({
     <div className="w-full max-w-4xl mx-auto">
       <div
         className="relative bg-background border border-border rounded-lg overflow-hidden"
-        style={{ height: '40vh', minHeight: '300px' }}
+        style={{
+          height: screenSize === 'mobile' ? '35vh' : '40vh',
+          minHeight: screenSize === 'mobile' ? '280px' : '300px'
+        }}
       >
         {/* Three sections container */}
         <div className="absolute inset-0 flex flex-col">

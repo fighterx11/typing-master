@@ -62,23 +62,24 @@ const Index = () => {
     <div className="min-h-screen bg-background">
       {/* Header */}
       <header className="border-b border-border bg-card/50">
-        <div className="container max-w-6xl mx-auto px-4 py-4">
+        <div className="container max-w-6xl mx-auto px-2 sm:px-4 py-2 sm:py-4">
           <div className="flex items-center justify-between">
-            <div className="flex items-center gap-3">
-              <div className="h-10 w-10 rounded-lg bg-gradient-to-br from-primary to-primary-glow flex items-center justify-center">
-                <Keyboard className="h-6 w-6 text-primary-foreground" />
+            <div className="flex items-center gap-2 sm:gap-3">
+              <div className="h-8 w-8 sm:h-10 sm:w-10 rounded-lg bg-gradient-to-br from-primary to-primary-glow flex items-center justify-center">
+                <Keyboard className="h-4 w-4 sm:h-6 sm:w-6 text-primary-foreground" />
               </div>
               <div>
-                <h1 className="text-2xl font-bold text-foreground">TypeSpeed</h1>
-                <p className="text-sm text-muted-foreground">Master your typing skills</p>
+                <h1 className="text-lg sm:text-2xl font-bold text-foreground">TypeSpeed</h1>
+                <p className="text-xs sm:text-sm text-muted-foreground hidden sm:block">Master your typing skills</p>
               </div>
             </div>
 
-            <nav className="flex items-center gap-2">
+            <nav className="flex items-center gap-1 sm:gap-2">
               <Button
                 variant={currentState === 'test' ? 'default' : 'ghost'}
                 onClick={handleBackToTest}
                 size="sm"
+                className="text-xs sm:text-sm px-2 sm:px-3"
               >
                 Test
               </Button>
@@ -86,10 +87,11 @@ const Index = () => {
                 variant={currentState === 'progress' ? 'default' : 'ghost'}
                 onClick={handleViewProgress}
                 size="sm"
-                className="gap-2"
+                className="gap-1 sm:gap-2 text-xs sm:text-sm px-2 sm:px-3"
               >
-                <TrendingUp size={16} />
-                Progress
+                <TrendingUp size={14} className="sm:w-4 sm:h-4" />
+                <span className="hidden sm:inline">Progress</span>
+                <span className="sm:hidden">Stats</span>
               </Button>
             </nav>
           </div>
@@ -97,7 +99,7 @@ const Index = () => {
       </header>
 
       {/* Main Content */}
-      <main className="container max-w-6xl mx-auto px-4 py-8">
+      <main className="container max-w-6xl mx-auto px-2 sm:px-4 py-4 sm:py-8">
         {currentState === 'test' && (
           <div className="space-y-8">
             {/* Quick Stats */}
@@ -151,9 +153,9 @@ const Index = () => {
       </main>
 
       {/* Footer */}
-      <footer className="border-t border-border bg-card/30 mt-16">
-        <div className="container max-w-6xl mx-auto px-4 py-8 text-center">
-          <p className="text-muted-foreground">
+      <footer className="border-t border-border bg-card/30 mt-8 sm:mt-16">
+        <div className="container max-w-6xl mx-auto px-2 sm:px-4 py-4 sm:py-8 text-center">
+          <p className="text-xs sm:text-sm text-muted-foreground">
             Built with React, TypeScript, and Tailwind CSS
           </p>
         </div>

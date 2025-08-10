@@ -25,7 +25,6 @@ interface TypingTestProps {
 export interface TestResults {
   wpm: number;
   accuracy: number;
-  consistency: number;
   duration: number;
   totalChars: number;
   correctChars: number;
@@ -103,7 +102,6 @@ export const TypingTest: React.FC<TypingTestProps> = ({ onComplete }) => {
             const results: TestResults = {
               wpm,
               accuracy,
-              consistency: 0, // Not used anymore
               duration: actualDuration,
               totalChars: totalCharsRef.current,
               correctChars: correctCharsRef.current,
