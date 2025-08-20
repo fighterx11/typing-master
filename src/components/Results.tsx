@@ -12,6 +12,7 @@ interface ResultsProps {
   previousResults: TestResults[];
   onRetakeTest: () => void;
   onSaveResults: () => void;
+  isResultSaved?: boolean;
 }
 
 export const Results: React.FC<ResultsProps> = ({
@@ -19,6 +20,7 @@ export const Results: React.FC<ResultsProps> = ({
   previousResults,
   onRetakeTest,
   onSaveResults,
+  isResultSaved = false,
 }) => {
   // Prepare chart data
   const chartData = previousResults.slice(-10).map((result, index) => ({
@@ -159,24 +161,24 @@ export const Results: React.FC<ResultsProps> = ({
             <ResponsiveContainer width="100%" height="100%">
               <LineChart data={chartData}>
                 <CartesianGrid strokeDasharray="3 3" />
-                <XAxis 
-                  dataKey="test" 
+                <XAxis
+                  dataKey="test"
                   axisLine={false}
                   tickLine={false}
                 />
                 <YAxis axisLine={false} tickLine={false} />
                 <Tooltip content={<ChartTooltipContent />} />
-                <Line 
-                  type="monotone" 
-                  dataKey="wpm" 
-                  stroke="hsl(var(--primary))" 
+                <Line
+                  type="monotone"
+                  dataKey="wpm"
+                  stroke="hsl(var(--primary))"
                   strokeWidth={2}
                   dot={{ fill: "hsl(var(--primary))" }}
                 />
-                <Line 
-                  type="monotone" 
-                  dataKey="accuracy" 
-                  stroke="hsl(var(--accent))" 
+                <Line
+                  type="monotone"
+                  dataKey="accuracy"
+                  stroke="hsl(var(--accent))"
                   strokeWidth={2}
                   dot={{ fill: "hsl(var(--accent))" }}
                 />
@@ -201,9 +203,10 @@ export const Results: React.FC<ResultsProps> = ({
           variant="outline"
           className="gap-2"
           size="lg"
+          disabled={isResultSaved}
         >
           <Save size={18} />
-          Save Results
+          {isResultSaved ? 'Results Saved' : 'Save Results'}
         </Button>
       </div>
     </div>

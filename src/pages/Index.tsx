@@ -14,6 +14,7 @@ const Index = () => {
   const [currentState, setCurrentState] = useState<AppState>('test');
   const [currentResults, setCurrentResults] = useState<TestResults | null>(null);
   const [savedResults, setSavedResults] = useState<TestResults[]>([]);
+  const [isResultSaved, setIsResultSaved] = useState<boolean>(false);
 
   // Load saved results on component mount
   useEffect(() => {
@@ -23,17 +24,20 @@ const Index = () => {
   const handleTestComplete = (results: TestResults) => {
     setCurrentResults(results);
     setCurrentState('results');
+    setIsResultSaved(false); // Reset save status for new result
   };
 
   const handleRetakeTest = () => {
     setCurrentResults(null);
     setCurrentState('test');
+    setIsResultSaved(false); // Reset save status when retaking test
   };
 
   const handleSaveResults = () => {
-    if (currentResults) {
+    if (currentResults && !isResultSaved) {
       saveTestResult(currentResults);
       setSavedResults(getTestResults());
+      setIsResultSaved(true);
       toast({
         title: "Results Saved!",
         description: "Your test results have been saved to track your progress.",
@@ -140,6 +144,7 @@ const Index = () => {
             previousResults={savedResults}
             onRetakeTest={handleRetakeTest}
             onSaveResults={handleSaveResults}
+            isResultSaved={isResultSaved}
           />
         )}
 
