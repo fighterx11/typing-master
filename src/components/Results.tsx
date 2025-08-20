@@ -89,75 +89,75 @@ export const Results: React.FC<ResultsProps> = ({
   };
 
   return (
-    <div className="w-full max-w-4xl mx-auto space-y-6 animate-fade-in">
+    <div className="w-full max-w-4xl mx-auto space-y-4 sm:space-y-6 animate-fade-in px-2 sm:px-4">
       {/* Header */}
-      <div className="text-center space-y-2">
-        <h2 className="text-3xl font-bold text-primary">Test Complete!</h2>
-        <p className="text-muted-foreground">Here's how you performed</p>
+      <div className="text-center space-y-1 sm:space-y-2 py-2 sm:py-4">
+        <h2 className="text-2xl sm:text-3xl font-bold text-primary">Test Complete!</h2>
+        <p className="text-sm sm:text-base text-muted-foreground">Here's how you performed</p>
       </div>
 
       {/* Main Results Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-2xl mx-auto">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-6 max-w-2xl mx-auto">
         {/* WPM Card */}
-        <Card className="stat-card">
-          <div className="flex items-center justify-center mb-2">
-            <Trophy className="h-8 w-8 text-primary" />
+        <Card className="stat-card p-4 sm:p-6 text-center">
+          <div className="flex items-center justify-center mb-2 sm:mb-3">
+            <Trophy className="h-6 w-6 sm:h-8 sm:w-8 text-primary" />
           </div>
-          <div className="text-3xl font-bold text-primary mb-1">
+          <div className="text-2xl sm:text-3xl font-bold text-primary mb-1">
             {results.wpm}
           </div>
-          <div className="text-sm text-muted-foreground mb-2">Words Per Minute</div>
-          <Badge variant={getPerformanceColor('wpm', results.wpm) as any} className="text-xs">
+          <div className="text-xs sm:text-sm text-muted-foreground mb-2 sm:mb-3">Words Per Minute</div>
+          <Badge variant={getPerformanceColor('wpm', results.wpm) as any} className="text-xs px-2 py-1">
             {getPerformanceLabel('wpm', results.wpm)}
           </Badge>
         </Card>
 
         {/* Accuracy Card */}
-        <Card className="stat-card">
-          <div className="flex items-center justify-center mb-2">
-            <Target className="h-8 w-8 text-accent" />
+        <Card className="stat-card p-4 sm:p-6 text-center">
+          <div className="flex items-center justify-center mb-2 sm:mb-3">
+            <Target className="h-6 w-6 sm:h-8 sm:w-8 text-accent" />
           </div>
-          <div className="text-3xl font-bold text-accent mb-1">
+          <div className="text-2xl sm:text-3xl font-bold text-accent mb-1">
             {results.accuracy}%
           </div>
-          <div className="text-sm text-muted-foreground mb-2">Accuracy</div>
-          <Badge variant={getPerformanceColor('accuracy', results.accuracy) as any} className="text-xs">
+          <div className="text-xs sm:text-sm text-muted-foreground mb-2 sm:mb-3">Accuracy</div>
+          <Badge variant={getPerformanceColor('accuracy', results.accuracy) as any} className="text-xs px-2 py-1">
             {getPerformanceLabel('accuracy', results.accuracy)}
           </Badge>
         </Card>
       </div>
 
       {/* Detailed Stats */}
-      <Card className="card-elevated p-6">
-        <h3 className="text-lg font-semibold mb-4 flex items-center gap-2">
-          <Clock className="h-5 w-5" />
+      <Card className="card-elevated p-3 sm:p-6">
+        <h3 className="text-base sm:text-lg font-semibold mb-3 sm:mb-4 flex items-center gap-2">
+          <Clock className="h-4 w-4 sm:h-5 sm:w-5" />
           Test Details
         </h3>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
-          <div>
-            <div className="text-muted-foreground">Duration</div>
-            <div className="font-medium">{results.duration}s</div>
+        <div className="grid grid-cols-2 gap-3 sm:gap-4 text-xs sm:text-sm">
+          <div className="text-center sm:text-left">
+            <div className="text-muted-foreground mb-1">Duration</div>
+            <div className="font-semibold text-sm sm:text-base">{results.duration}s</div>
           </div>
-          <div>
-            <div className="text-muted-foreground">Total Characters</div>
-            <div className="font-medium">{results.totalChars}</div>
+          <div className="text-center sm:text-left">
+            <div className="text-muted-foreground mb-1">Total Characters</div>
+            <div className="font-semibold text-sm sm:text-base">{results.totalChars}</div>
           </div>
-          <div>
-            <div className="text-muted-foreground">Correct Characters</div>
-            <div className="font-medium">{results.correctChars}</div>
+          <div className="text-center sm:text-left">
+            <div className="text-muted-foreground mb-1">Correct Characters</div>
+            <div className="font-semibold text-sm sm:text-base">{results.correctChars}</div>
           </div>
-          <div>
-            <div className="text-muted-foreground">Errors</div>
-            <div className="font-medium">{results.totalChars - results.correctChars}</div>
+          <div className="text-center sm:text-left">
+            <div className="text-muted-foreground mb-1">Errors</div>
+            <div className="font-semibold text-sm sm:text-base">{results.totalChars - results.correctChars}</div>
           </div>
         </div>
       </Card>
 
       {/* Performance Chart */}
       {chartData.length > 1 && (
-        <Card className="card-elevated p-6">
-          <h3 className="text-lg font-semibold mb-4">Performance Trend</h3>
-          <ChartContainer config={chartConfig} className="h-[200px] w-full">
+        <Card className="card-elevated p-3 sm:p-6">
+          <h3 className="text-base sm:text-lg font-semibold mb-3 sm:mb-4">Performance Trend</h3>
+          <ChartContainer config={chartConfig} className="h-[180px] sm:h-[200px] w-full">
             <ResponsiveContainer width="100%" height="100%">
               <LineChart data={chartData}>
                 <CartesianGrid strokeDasharray="3 3" />
@@ -165,22 +165,23 @@ export const Results: React.FC<ResultsProps> = ({
                   dataKey="test"
                   axisLine={false}
                   tickLine={false}
+                  fontSize={12}
                 />
-                <YAxis axisLine={false} tickLine={false} />
+                <YAxis axisLine={false} tickLine={false} fontSize={12} />
                 <Tooltip content={<ChartTooltipContent />} />
                 <Line
                   type="monotone"
                   dataKey="wpm"
                   stroke="hsl(var(--primary))"
                   strokeWidth={2}
-                  dot={{ fill: "hsl(var(--primary))" }}
+                  dot={{ fill: "hsl(var(--primary))", r: 3 }}
                 />
                 <Line
                   type="monotone"
                   dataKey="accuracy"
                   stroke="hsl(var(--accent))"
                   strokeWidth={2}
-                  dot={{ fill: "hsl(var(--accent))" }}
+                  dot={{ fill: "hsl(var(--accent))", r: 3 }}
                 />
               </LineChart>
             </ResponsiveContainer>
@@ -189,10 +190,10 @@ export const Results: React.FC<ResultsProps> = ({
       )}
 
       {/* Action Buttons */}
-      <div className="flex gap-4 justify-center">
+      <div className="space-y-3 sm:space-y-0 sm:flex sm:gap-4 sm:justify-center px-4 sm:px-0 pb-2">
         <Button
           onClick={onRetakeTest}
-          className="btn-primary gap-2"
+          className="btn-primary gap-2 w-full sm:w-auto sm:min-w-[140px] h-12 sm:h-10 text-base font-medium"
           size="lg"
         >
           <RotateCcw size={18} />
@@ -201,7 +202,7 @@ export const Results: React.FC<ResultsProps> = ({
         <Button
           onClick={onSaveResults}
           variant="outline"
-          className="gap-2"
+          className="gap-2 w-full sm:w-auto sm:min-w-[140px] h-12 sm:h-10 text-base font-medium border-2 hover:bg-muted/50"
           size="lg"
           disabled={isResultSaved}
         >
