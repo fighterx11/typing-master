@@ -6,6 +6,7 @@ import { Results } from '@/components/Results';
 import { Progress } from '@/components/Progress';
 import { saveTestResult, getTestResults, clearTestResults } from '@/utils/storage';
 import { Keyboard, TrendingUp, Trophy } from 'lucide-react';
+import { ThemeToggle } from '@/components/ThemeToggle';
 import { toast } from '@/lib/hooks/use-toast';
 
 type AppState = 'test' | 'results' | 'progress';
@@ -63,27 +64,29 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background flex flex-col">
       {/* Header */}
-      <header className="border-b border-border bg-card/50">
-        <div className="container max-w-6xl mx-auto px-2 sm:px-4 py-2 sm:py-4">
+      <header className="sticky top-0 z-50 border-b border-border bg-card/80 backdrop-blur-lg">
+        <div className="container max-w-6xl mx-auto px-3 sm:px-4 py-3 sm:py-4">
           <div className="flex items-center justify-between">
-            <div className="flex items-center gap-2 sm:gap-3">
-              <div className="h-8 w-8 sm:h-10 sm:w-10 rounded-lg bg-gradient-to-br from-primary to-primary-glow flex items-center justify-center">
-                <Keyboard className="h-4 w-4 sm:h-6 sm:w-6 text-primary-foreground" />
+            <div className="flex items-center gap-3 sm:gap-4">
+              <div className="h-10 w-10 sm:h-12 sm:w-12 rounded-xl bg-gradient-to-br from-primary via-primary to-primary-glow flex items-center justify-center shadow-lg shadow-primary/25">
+                <Keyboard className="h-5 w-5 sm:h-6 sm:w-6 text-primary-foreground" />
               </div>
-              <div>
-                <h1 className="text-lg sm:text-2xl font-bold text-foreground">TypeSpeed</h1>
-                <p className="text-xs sm:text-sm text-muted-foreground hidden sm:block">Master your typing skills</p>
+              <div className="flex flex-col">
+                <h1 className="text-xl sm:text-2xl font-bold bg-gradient-to-r from-foreground to-foreground/80 bg-clip-text text-transparent">
+                  TypeSpeed
+                </h1>
               </div>
             </div>
 
             <nav className="flex items-center gap-1 sm:gap-2">
+              <ThemeToggle />
               <Button
                 variant={currentState === 'test' ? 'default' : 'ghost'}
                 onClick={handleBackToTest}
                 size="sm"
-                className="text-xs sm:text-sm px-2 sm:px-3"
+                className="text-xs sm:text-sm px-3 sm:px-4 h-8 sm:h-9 font-medium"
               >
                 Test
               </Button>
@@ -91,7 +94,7 @@ const Index = () => {
                 variant={currentState === 'progress' ? 'default' : 'ghost'}
                 onClick={handleViewProgress}
                 size="sm"
-                className="gap-1 sm:gap-2 text-xs sm:text-sm px-2 sm:px-3"
+                className="gap-1.5 sm:gap-2 text-xs sm:text-sm px-3 sm:px-4 h-8 sm:h-9 font-medium"
               >
                 <TrendingUp size={14} className="sm:w-4 sm:h-4" />
                 <span className="hidden sm:inline">Progress</span>
@@ -103,7 +106,7 @@ const Index = () => {
       </header>
 
       {/* Main Content */}
-      <main className="container max-w-6xl mx-auto px-2 sm:px-4 py-4 sm:py-8">
+      <main className="flex-1 container max-w-6xl mx-auto px-2 sm:px-4 py-4 sm:py-8">
         {currentState === 'test' && (
           <div className="space-y-8">
             {/* Quick Stats */}
@@ -158,9 +161,9 @@ const Index = () => {
       </main>
 
       {/* Footer */}
-      <footer className="border-t border-border bg-gradient-to-br from-card/50 to-card/30 backdrop-blur-sm mt-8 sm:mt-16">
-        <div className="container max-w-6xl mx-auto px-4 sm:px-6 py-6 sm:py-8">
-          <div className="flex flex-col items-center space-y-4 sm:space-y-6">
+      <footer className="mt-auto border-t border-border bg-gradient-to-br from-card/50 to-card/30 backdrop-blur-sm">
+        <div className="container max-w-6xl mx-auto px-4 sm:px-6 py-4 sm:py-6">
+          <div className="flex flex-col items-center space-y-3 sm:space-y-4">
             {/* Links */}
             <div className="flex items-center gap-6">
               <a
@@ -176,18 +179,8 @@ const Index = () => {
               </a>
             </div>
 
-            {/* Tech Stack */}
-            <div className="text-center space-y-2">
-              <p className="text-xs text-muted-foreground/80">Built with</p>
-              <div className="flex items-center justify-center gap-2 text-xs text-muted-foreground">
-                <span className="px-2 py-1 bg-background/50 rounded-md border">React</span>
-                <span className="px-2 py-1 bg-background/50 rounded-md border">TypeScript</span>
-                <span className="px-2 py-1 bg-background/50 rounded-md border">Tailwind CSS</span>
-              </div>
-            </div>
-
             {/* Copyright */}
-            <div className="pt-4 border-t border-border/50 w-full">
+            <div className="pt-2 border-t border-border/50 w-full">
               <p className="text-xs text-muted-foreground/60 text-center">
                 © {new Date().getFullYear()} Crafted with ❤️ for typing enthusiasts.
               </p>

@@ -356,13 +356,13 @@ export const TypingTest: React.FC<TypingTestProps> = ({ onComplete }) => {
         />
       </div>
 
-      {/* Mobile Instructions */}
+      {/* Instructions */}
       {!hasStarted && (
-        <div className="text-center text-muted-foreground">
-          <p className="flex items-center justify-center gap-2">
-            <Play size={16} />
-            <span className="hidden sm:inline">Start typing to begin the test</span>
-            <span className="sm:hidden">Tap above and start typing to begin</span>
+        <div className="text-center">
+          <p className="flex items-center justify-center gap-2 text-muted-foreground">
+            <Play size={14} className="sm:size-4" />
+            <span className="hidden sm:inline text-sm">Start typing to begin the test</span>
+            <span className="sm:hidden text-xs">Tap above to start typing</span>
           </p>
         </div>
       )}
