@@ -36,7 +36,7 @@ export const TypingDisplay: React.FC<TypingDisplayProps> = ({
 
   const getCharLimit = () => {
     switch (screenSize) {
-      case 'mobile': return 30;
+      case 'mobile': return 25;
       case 'tablet': return 45;
       case 'desktop': return 60;
       default: return 60;
@@ -166,7 +166,7 @@ export const TypingDisplay: React.FC<TypingDisplayProps> = ({
     return (
       <div
         key={lineIndex}
-        className={`flex ${screenSize === 'mobile' ? 'gap-1' : 'gap-3'} min-h-[2rem] items-center transition-all duration-300 ${
+        className={`flex gap-3 min-h-[2rem] items-center transition-all duration-300 ${
           isCurrentLine ? 'opacity-100' : 'opacity-70'
         }`}
       >
@@ -192,7 +192,7 @@ export const TypingDisplay: React.FC<TypingDisplayProps> = ({
           {/* Top section (0-33%) - completed lines */}
           <div className="flex-1 p-4 sm:p-6 md:p-8 overflow-hidden">
             <div className="h-full flex items-center">
-              <div className="text-lg md:text-xl lg:text-2xl font-mono leading-relaxed w-full overflow-hidden">
+              <div className="text-xl lg:text-2xl font-mono leading-relaxed w-full overflow-hidden">
                 {currentLineIndex > 0 && lines[currentLineIndex - 1] &&
                   renderLine(lines[currentLineIndex - 1], currentLineIndex - 1)
                 }
@@ -203,7 +203,7 @@ export const TypingDisplay: React.FC<TypingDisplayProps> = ({
           {/* Middle section (33-66%) - current line */}
           <div className="flex-1 p-4 sm:p-6 md:p-8 bg-accent/5 border-y border-accent/20">
             <div className="h-full flex items-center">
-              <div className="text-lg md:text-xl lg:text-2xl font-mono leading-relaxed w-full overflow-hidden">
+              <div className="text-xl lg:text-2xl font-mono leading-relaxed w-full overflow-hidden">
                 {lines[currentLineIndex] && renderLine(lines[currentLineIndex], currentLineIndex)}
               </div>
             </div>
@@ -212,7 +212,7 @@ export const TypingDisplay: React.FC<TypingDisplayProps> = ({
           {/* Bottom section (66-99%) - upcoming lines */}
           <div className="flex-1 p-4 sm:p-6 md:p-8 overflow-hidden">
             <div className="h-full flex items-center">
-              <div className="text-lg md:text-xl lg:text-2xl font-mono leading-relaxed w-full overflow-hidden">
+              <div className="text-xl lg:text-2xl font-mono leading-relaxed w-full overflow-hidden">
                 {lines[currentLineIndex + 1] &&
                   renderLine(lines[currentLineIndex + 1], currentLineIndex + 1)
                 }
