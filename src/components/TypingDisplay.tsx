@@ -36,7 +36,7 @@ export const TypingDisplay: React.FC<TypingDisplayProps> = ({
 
   const getCharLimit = () => {
     switch (screenSize) {
-      case 'mobile': return 20;
+      case 'mobile': return 22;
       case 'tablet': return 40;
       case 'desktop': return 60;
       default: return 60;
