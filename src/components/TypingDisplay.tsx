@@ -107,13 +107,13 @@ export const TypingDisplay: React.FC<TypingDisplayProps> = ({
           className={`relative px-1 ${isInCurrentLine ? 'bg-primary/10 rounded' : ''}`}
         >
           {word.split('').map((char, charIndex) => {
-            let className = 'text-muted-foreground/60'; // default: skipped/untyped
+            let className = 'text-dim'; // default: skipped/untyped
             if (charIndex < userInput.length) {
               className = userInput[charIndex] === char
-                ? 'text-green-500' // correct
-                : 'text-red-500'; // wrong
+                ? 'text-correct' // correct
+                : 'text-incorrect'; // wrong
             } else if (charIndex === currentCharIndex) {
-              className = 'text-muted-foreground/60 border-b border-primary';
+              className = 'text-dim border-b border-primary';
             }
             return (
               <span key={charIndex} className={className}>
@@ -130,11 +130,11 @@ export const TypingDisplay: React.FC<TypingDisplayProps> = ({
         <span key={globalWordIndex}>
           {word.split('').map((char, charIndex) => {
             const typedChar = typedWord[charIndex];
-            let className = 'text-muted-foreground/60'; // default: skipped
+            let className = 'text-dim'; // default: skipped
             if (typedChar !== undefined) {
               className = typedChar === char
-                ? 'text-green-500' // correct
-                : 'text-red-500'; // wrong
+                ? 'text-correct' // correct
+                : 'text-incorrect'; // wrong
             }
             return (
               <span key={charIndex} className={className}>
@@ -147,7 +147,7 @@ export const TypingDisplay: React.FC<TypingDisplayProps> = ({
     } else {
       // Upcoming words
       return (
-        <span key={globalWordIndex} className="text-muted-foreground/40">
+        <span key={globalWordIndex} className="text-dim">
           {word}
         </span>
       );
