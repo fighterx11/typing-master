@@ -142,26 +142,41 @@ const Index = () => {
             {/* Quick Stats */}
             {savedResults.length > 0 && (
               <div className="flex flex-row gap-2 md:grid md:grid-cols-3 md:gap-4 max-w-2xl mx-auto">
-                <Card className="stat-card flex-1 p-3 sm:p-6 text-xs sm:text-base">
-                  <Trophy className="h-5 w-5 sm:h-6 sm:w-6 text-primary mx-auto mb-1 sm:mb-2" />
-                  <div className="text-lg sm:text-xl font-bold text-primary">
-                    {Math.max(...savedResults.map(r => r.wpm))}
+                <Card className="group relative overflow-hidden bg-gradient-to-br from-primary/5 via-card to-primary/10 border border-primary/20 hover:border-primary/40 transition-all duration-300 hover:shadow-strong hover:scale-105 flex-1 p-3 sm:p-6 text-xs sm:text-base">
+                  <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  <div className="relative z-10 text-center">
+                    <div className="p-1 sm:p-2 rounded-full bg-primary/10 group-hover:bg-primary/20 transition-colors duration-300 w-fit mx-auto mb-1 sm:mb-2">
+                      <Trophy className="h-4 w-4 sm:h-5 sm:w-5 text-primary" />
+                    </div>
+                    <div className="text-lg sm:text-xl font-bold text-primary font-mono">
+                      {Math.max(...savedResults.map(r => r.wpm))}
+                    </div>
+                    <div className="text-xs sm:text-sm text-muted-foreground font-medium tracking-wide">BEST WPM</div>
                   </div>
-                  <div className="text-xs sm:text-sm text-muted-foreground">Best WPM</div>
                 </Card>
-                <Card className="stat-card flex-1 p-3 sm:p-6 text-xs sm:text-base">
-                  <TrendingUp className="h-5 w-5 sm:h-6 sm:w-6 text-accent mx-auto mb-1 sm:mb-2" />
-                  <div className="text-lg sm:text-xl font-bold text-accent">
-                    {Math.round(savedResults.reduce((sum, r) => sum + r.wpm, 0) / savedResults.length)}
+                <Card className="group relative overflow-hidden bg-gradient-to-br from-accent/5 via-card to-accent/10 border border-accent/20 hover:border-accent/40 transition-all duration-300 hover:shadow-strong hover:scale-105 flex-1 p-3 sm:p-6 text-xs sm:text-base">
+                  <div className="absolute inset-0 bg-gradient-to-br from-accent/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  <div className="relative z-10 text-center">
+                    <div className="p-1 sm:p-2 rounded-full bg-accent/10 group-hover:bg-accent/20 transition-colors duration-300 w-fit mx-auto mb-1 sm:mb-2">
+                      <TrendingUp className="h-4 w-4 sm:h-5 sm:w-5 text-accent" />
+                    </div>
+                    <div className="text-lg sm:text-xl font-bold text-accent font-mono">
+                      {Math.round(savedResults.reduce((sum, r) => sum + r.wpm, 0) / savedResults.length)}
+                    </div>
+                    <div className="text-xs sm:text-sm text-muted-foreground font-medium tracking-wide">AVG WPM</div>
                   </div>
-                  <div className="text-xs sm:text-sm text-muted-foreground">Average WPM</div>
                 </Card>
-                <Card className="stat-card flex-1 p-3 sm:p-6 text-xs sm:text-base">
-                  <Keyboard className="h-5 w-5 sm:h-6 sm:w-6 text-success mx-auto mb-1 sm:mb-2" />
-                  <div className="text-lg sm:text-xl font-bold text-success">
-                    {savedResults.length}
+                <Card className="group relative overflow-hidden bg-gradient-to-br from-success/5 via-card to-success/10 border border-success/20 hover:border-success/40 transition-all duration-300 hover:shadow-strong hover:scale-105 flex-1 p-3 sm:p-6 text-xs sm:text-base">
+                  <div className="absolute inset-0 bg-gradient-to-br from-success/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  <div className="relative z-10 text-center">
+                    <div className="p-1 sm:p-2 rounded-full bg-success/10 group-hover:bg-success/20 transition-colors duration-300 w-fit mx-auto mb-1 sm:mb-2">
+                      <Keyboard className="h-4 w-4 sm:h-5 sm:w-5 text-success" />
+                    </div>
+                    <div className="text-lg sm:text-xl font-bold text-success font-mono">
+                      {savedResults.length}
+                    </div>
+                    <div className="text-xs sm:text-sm text-muted-foreground font-medium tracking-wide">TESTS</div>
                   </div>
-                  <div className="text-xs sm:text-sm text-muted-foreground">Tests Taken</div>
                 </Card>
               </div>
             )}
