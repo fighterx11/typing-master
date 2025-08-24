@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Moon, Sun, Monitor, ChevronDown } from 'lucide-react';
 import { useTheme } from 'next-themes';
@@ -28,7 +29,6 @@ export const ThemeToggle: React.FC = () => {
       <DropdownMenuTrigger asChild>
         <Button variant="ghost" size="sm" className="h-9 px-2">
           {getThemeIcon()}
-          <ChevronDown className="h-3 w-3 ml-1" />
           <span className="sr-only">Toggle theme</span>
         </Button>
       </DropdownMenuTrigger>
@@ -39,7 +39,6 @@ export const ThemeToggle: React.FC = () => {
         >
           <Sun className="h-4 w-4" />
           Light
-          {theme === 'light' && <span className="ml-auto text-xs">✓</span>}
         </DropdownMenuItem>
         <DropdownMenuItem
           onClick={() => setTheme('dark')}
@@ -47,7 +46,6 @@ export const ThemeToggle: React.FC = () => {
         >
           <Moon className="h-4 w-4" />
           Dark
-          {theme === 'dark' && <span className="ml-auto text-xs">✓</span>}
         </DropdownMenuItem>
         <DropdownMenuItem
           onClick={() => setTheme('system')}
@@ -55,7 +53,6 @@ export const ThemeToggle: React.FC = () => {
         >
           <Monitor className="h-4 w-4" />
           System
-          {theme === 'system' && <span className="ml-auto text-xs">✓</span>}
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>

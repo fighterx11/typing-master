@@ -113,10 +113,10 @@ export const TypingDisplay: React.FC<TypingDisplayProps> = ({
                 ? 'text-correct' // correct
                 : 'text-incorrect'; // wrong
             } else if (charIndex === currentCharIndex) {
-              className = 'text-dim border-b border-primary';
+              className = 'text-dim border-b-2 border-primary transform transition-transform duration-100 ease-out';
             }
             return (
-              <span key={charIndex} className={className}>
+              <span key={charIndex} className={`${className} transition-all duration-100 ease-out`}>
                 {char}
               </span>
             );
