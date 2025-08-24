@@ -92,19 +92,19 @@ export const Progress: React.FC<ProgressProps> = ({
 
       {/* Statistics Overview */}
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-6">
-        <Card className="group relative overflow-hidden bg-gradient-to-br from-primary/5 via-card to-primary/10 border border-primary/20 hover:border-primary/40 transition-all duration-300 hover:shadow-strong hover:scale-105 p-4 sm:p-6">
-          <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+        <Card className="group relative overflow-hidden bg-gradient-to-br from-success/5 via-card to-success/10 border border-success/20 hover:border-success/40 transition-all duration-300 hover:shadow-strong hover:scale-105 p-4 sm:p-6">
+          <div className="absolute inset-0 bg-gradient-to-br from-success/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
           <div className="relative z-10">
             <div className="flex items-center justify-center mb-2 sm:mb-3">
-              <div className="p-2 sm:p-3 rounded-full bg-primary/10 group-hover:bg-primary/20 transition-colors duration-300">
-                <Trophy className="h-4 w-4 sm:h-6 sm:w-6 text-primary" />
+              <div className="p-2 sm:p-3 rounded-full bg-success/10 group-hover:bg-success/20 transition-colors duration-300">
+                <Trophy className="h-4 w-4 sm:h-6 sm:w-6 text-success" />
               </div>
             </div>
-            <div className="text-xl sm:text-3xl font-bold text-primary mb-1 font-mono">
+            <div className="text-xl sm:text-3xl font-bold text-success mb-1 font-mono">
               {bestWpm}
             </div>
             <div className="text-xs sm:text-sm text-muted-foreground font-medium">Best WPM</div>
-            <div className="absolute top-2 right-2 w-8 h-8 rounded-full bg-primary/5 group-hover:bg-primary/10 transition-colors duration-300" />
+            <div className="absolute top-2 right-2 w-8 h-8 rounded-full bg-success/5 group-hover:bg-success/10 transition-colors duration-300" />
           </div>
         </Card>
 
