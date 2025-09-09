@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Moon, Sun, Monitor, ChevronDown } from 'lucide-react';
 import { useTheme } from 'next-themes';
@@ -33,21 +32,21 @@ export const ThemeToggle: React.FC = () => {
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end" className="min-w-[120px]">
-        <DropdownMenuItem
+        <DropdownMenuItem 
           onClick={() => setTheme('light')}
           className="flex items-center gap-2"
         >
           <Sun className="h-4 w-4" />
           Light
         </DropdownMenuItem>
-        <DropdownMenuItem
+        <DropdownMenuItem 
           onClick={() => setTheme('dark')}
           className="flex items-center gap-2"
         >
           <Moon className="h-4 w-4" />
           Dark
         </DropdownMenuItem>
-        <DropdownMenuItem
+        <DropdownMenuItem 
           onClick={() => setTheme('system')}
           className="flex items-center gap-2"
         >
