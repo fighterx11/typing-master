@@ -182,4 +182,4 @@ If you have any questions or need help, please open an issue on the GitHub repos
 
 ---
 
-Built with ❤️ by [Aditya Kumar Gupta](mailto:your-email@example.com)
+Built with ❤️ by [Aditya Kumar Gupta](mailto:aditya.rakesh.2005@gmail.com)
